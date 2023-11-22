@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "298327871703",
+    "project_id": "unj-canteen",
+    "storage_bucket": "unj-canteen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298327871703:android:0587b3d2238f081e036092",
+        "android_client_info": {
+          "package_name": "com.example.unj_canteen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhZY2xyU9BcSnAaGrHMV8YltZ5FMA2l9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
