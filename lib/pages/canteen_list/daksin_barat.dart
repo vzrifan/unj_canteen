@@ -61,21 +61,21 @@ class _DaksinBaratState extends State<DaksinBarat> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(35),
+        preferredSize: const Size.fromHeight(35),
         child: AppBar(
-          backgroundColor: Color(0xFF5B5B5B),
+          backgroundColor: const Color(0xFF5B5B5B),
           elevation: 0,
         ),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Color(0xFF333333),
+        color: const Color(0xFF333333),
         child: ListView(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              decoration: ShapeDecoration(
+              decoration: const ShapeDecoration(
                   color: Color(0xFF5B5B5B),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
@@ -89,7 +89,7 @@ class _DaksinBaratState extends State<DaksinBarat> {
                     children: [
                       Text(
                         'Selamat Datang di Kantin UNJ\n${_auth.currentUser!.email}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
                           fontFamily: 'Inter',
@@ -100,7 +100,7 @@ class _DaksinBaratState extends State<DaksinBarat> {
                       const SizedBox(
                         width: 20,
                       ),
-                      Image(
+                      const Image(
                         image: AssetImage("assets/images/logo_unj.png"),
                       )
                     ],
@@ -117,19 +117,19 @@ class _DaksinBaratState extends State<DaksinBarat> {
                         child: SingleChildScrollView(
                           child: TextField(
                             controller: _searchController,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             onChanged: (value) {
                               _filterList(value);
                             },
                             decoration: InputDecoration(
-                                fillColor: Color(0xFF333333),
+                                fillColor: const Color(0xFF333333),
                                 filled: true,
-                                suffixIcon: Icon(
+                                suffixIcon: const Icon(
                                   Icons.search,
                                   color: Color(0xFF15C8CF),
                                 ),
                                 hintText: "   Search",
-                                hintStyle: TextStyle(color: Color(0xFF15C8CF)),
+                                hintStyle: const TextStyle(color: Color(0xFF15C8CF)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20))),
                           ),
@@ -153,9 +153,9 @@ class _DaksinBaratState extends State<DaksinBarat> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 buildElevatedButton(
-                    "Daksin Barat", getStatus(), context, DaksinBarat()),
+                    "Daksin Barat", getStatus(), context, const DaksinBarat()),
                 buildElevatedButton(
-                    "Lapangan", getStatus(), context, Lapangan()),
+                    "Lapangan", getStatus(), context, const Lapangan()),
               ],
             ),
             const SizedBox(
@@ -200,6 +200,7 @@ class _DaksinBaratState extends State<DaksinBarat> {
   }
 
   Container buildContainerCard(int index) {
+    // ignore: sized_box_for_whitespace
     return Container(
       height: 168,
       child: ListView(

@@ -18,7 +18,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> _pages = [
     const DaksinBarat(),
     const BlokM1(),
-    const SettingsPage(), // TODO third page
+    const SettingsPage(),
   ];
 
   void _onTabTapped(int index) {
@@ -36,11 +36,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
       // ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Color(0xFF16C8CF),
-        selectedLabelStyle: TextStyle(color: Color(0xFF16C8CF)),
-        unselectedItemColor: Color.fromARGB(255, 50, 47, 47),
-        unselectedLabelStyle: TextStyle(color: Color.fromARGB(255, 50, 47, 47)),
-        backgroundColor: Color(0xFF5B5B5B),
+        selectedItemColor: const Color(0xFF16C8CF),
+        selectedLabelStyle: const TextStyle(color: Color(0xFF16C8CF)),
+        unselectedItemColor: const Color.fromARGB(255, 50, 47, 47),
+        unselectedLabelStyle: const TextStyle(color: Color.fromARGB(255, 50, 47, 47)),
+        backgroundColor: const Color(0xFF5B5B5B),
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
         items: const [

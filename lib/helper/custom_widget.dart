@@ -6,11 +6,11 @@ Container contentAlert(
   String foodName,
 ) {
   return Container(
-    color: Color(0xFF333333),
+    color: const Color(0xFF333333),
     child: Column(
       children: [
         Container(
-          color: Color(0xFF5B5B5B),
+          color: const Color(0xFF5B5B5B),
           child: Column(
             children: [
               Image(
@@ -24,7 +24,7 @@ Container contentAlert(
               ),
               Text(
                 '  $foodName\n',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 11,
                   fontFamily: 'Inter',
@@ -45,7 +45,7 @@ Container contentAlert(
 Text buildTextTitle(String title) {
   return Text(
     '  $title',
-    style: TextStyle(
+    style: const TextStyle(
       color: Colors.white,
       fontSize: 14,
       fontFamily: 'Inter',
@@ -57,7 +57,7 @@ Text buildTextTitle(String title) {
 
 AlertDialog buildAlertDialog(String imagePath, String foodName) {
   return AlertDialog(
-    backgroundColor: Color(0xFF333333),
+    backgroundColor: const Color(0xFF333333),
     content: contentAlert(imagePath, foodName),
   );
 }
@@ -102,7 +102,7 @@ ElevatedButton buildElevatedButton(String title,
     ),
     child: Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xFF1C1C1C),
         fontSize: 14,
         fontFamily: 'Inter',
@@ -114,8 +114,8 @@ ElevatedButton buildElevatedButton(String title,
 
 Card buildCard(String imagePath, String foodName, BuildContext context) {
   return Card(
-    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-    color: Color(0xFF333333),
+    margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+    color: const Color(0xFF333333),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,11 +123,10 @@ Card buildCard(String imagePath, String foodName, BuildContext context) {
         Container(
           width: 206,
           height: 168,
-          color: Color(0xFF5B5B5B),
+          color: const Color(0xFF5B5B5B),
           child: Column(
             children: [
               InkWell(
-                //TODO navigate
                 onTap: () {
                   showDialog(
                       context: context,
@@ -147,7 +146,7 @@ Card buildCard(String imagePath, String foodName, BuildContext context) {
                 children: [
                   Text(
                     '  $foodName\n',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 11,
                       fontFamily: 'Inter',
@@ -156,16 +155,21 @@ Card buildCard(String imagePath, String foodName, BuildContext context) {
                     ),
                   ),
                   TextButton(
-                      // TODO navigate
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return buildAlertDialog(imagePath, foodName);
+                            });
+                      },
                       style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFF15C8CF),
+                          backgroundColor: const Color(0xFF15C8CF),
                           foregroundColor: Colors.white,
-                          side:
-                              BorderSide(color: Color(0xFF5B5B5B), width: 2.0),
+                          side: const BorderSide(
+                              color: Color(0xFF5B5B5B), width: 2.0),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0))),
-                      child: Text(
+                      child: const Text(
                         'Lihat',
                         style: TextStyle(
                           color: Colors.white,

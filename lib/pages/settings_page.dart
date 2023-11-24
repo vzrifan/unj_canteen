@@ -25,14 +25,14 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
-        backgroundColor: Color(0xFF5B5B5B),
-        foregroundColor: Color(0xFF16C8CF),
+        title: const Text("Settings"),
+        backgroundColor: const Color(0xFF5B5B5B),
+        foregroundColor: const Color(0xFF16C8CF),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        color: Color(0xFF333333),
+        color: const Color(0xFF333333),
         child: Column(
           children: [
             const SizedBox(
@@ -114,10 +114,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     borderRadius: BorderRadius.circular(20)),
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
-                minimumSize: Size.fromHeight(70),
+                minimumSize: const Size.fromHeight(70),
               ),
               onPressed: signOut,
-              child: Text(
+              child: const Text(
                 "Logout",
                 style: TextStyle(color: Colors.white),
               ),

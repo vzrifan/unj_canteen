@@ -26,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
       await authService.signInWithEmailAndPassword(
           emailController.text, passwordController.text);
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
     }
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF282828),
+      backgroundColor: const Color(0xFF282828),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Center(
@@ -55,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                   // ),
 
                   Image(
-                    image: AssetImage('assets/images/logo_apk.png'),
+                    image: const AssetImage('assets/images/logo_apk.png'),
                     height: MediaQuery.of(context).size.height / 3,
                     width: MediaQuery.of(context).size.width / 3,
                   ),

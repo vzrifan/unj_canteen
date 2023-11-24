@@ -63,21 +63,21 @@ class _BlokM2State extends State<BlokM2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(35),
+        preferredSize: const Size.fromHeight(35),
         child: AppBar(
-          backgroundColor: Color(0xFF5B5B5B),
+          backgroundColor: const Color(0xFF5B5B5B),
           elevation: 0,
         ),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Color(0xFF333333),
+        color: const Color(0xFF333333),
         child: ListView(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              decoration: ShapeDecoration(
+              decoration: const ShapeDecoration(
                   color: Color(0xFF5B5B5B),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
@@ -91,7 +91,7 @@ class _BlokM2State extends State<BlokM2> {
                     children: [
                       Text(
                         'Selamat Datang di Kantin UNJ\n${_auth.currentUser!.email}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
                           fontFamily: 'Inter',
@@ -102,7 +102,7 @@ class _BlokM2State extends State<BlokM2> {
                       const SizedBox(
                         width: 20,
                       ),
-                      Image(
+                      const Image(
                         image: AssetImage("assets/images/logo_unj.png"),
                       )
                     ],
@@ -119,19 +119,19 @@ class _BlokM2State extends State<BlokM2> {
                         child: SingleChildScrollView(
                           child: TextField(
                             controller: _searchController,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             onChanged: (value) {
                               _filterList(value);
                             },
                             decoration: InputDecoration(
-                                fillColor: Color(0xFF333333),
+                                fillColor: const Color(0xFF333333),
                                 filled: true,
-                                suffixIcon: Icon(
+                                suffixIcon: const Icon(
                                   Icons.search,
                                   color: Color(0xFF15C8CF),
                                 ),
                                 hintText: "   Search",
-                                hintStyle: TextStyle(color: Color(0xFF15C8CF)),
+                                hintStyle: const TextStyle(color: Color(0xFF15C8CF)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20))),
                           ),
@@ -152,10 +152,10 @@ class _BlokM2State extends State<BlokM2> {
               height: 10,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-              buildElevatedButton("1", getStatus(), context, BlokM1()),
-              buildElevatedButton("2", getStatus(), context, BlokM2()),
-              buildElevatedButton("3", getStatus(), context, BlokM3()),
-              buildElevatedButton("4", getStatus(), context, BlokM4()),
+              buildElevatedButton("1", getStatus(), context, const BlokM1()),
+              buildElevatedButton("2", getStatus(), context, const BlokM2()),
+              buildElevatedButton("3", getStatus(), context, const BlokM3()),
+              buildElevatedButton("4", getStatus(), context, const BlokM4()),
             ]),
             const SizedBox(
               height: 20,
@@ -199,6 +199,7 @@ class _BlokM2State extends State<BlokM2> {
   }
 
   Container buildContainerCard(int index) {
+    // ignore: sized_box_for_whitespace
     return Container(
       height: 168,
       child: ListView(

@@ -51,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF282828),
+      backgroundColor: const Color(0xFF282828),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Center(
@@ -72,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   // ),
 
                   Image(
-                    image: AssetImage('assets/images/logo_apk.png'),
+                    image: const AssetImage('assets/images/logo_apk.png'),
                     height: MediaQuery.of(context).size.height / 3,
                     width: MediaQuery.of(context).size.width / 3,
                   ),
