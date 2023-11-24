@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../pages/bottom_navigation.dart';
-import '../../pages/home_page.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -11,17 +10,20 @@ class AuthGate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder:(context, snapshot) {
-        // user is logged in
-        if(snapshot.hasData){
-          return const BottomNavigation();
-        }
+      body: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          // user is logged in
+          if (snapshot.hasData) {
+            return const BottomNavigation();
+          }
 
-        // user is NOT login
-        else{
-          return const LoginOrRegister();
-        }
-      },),
+          // user is NOT login
+          else {
+            return const LoginOrRegister();
+          }
+        },
+      ),
     );
   }
 }

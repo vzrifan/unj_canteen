@@ -1,5 +1,5 @@
 import 'package:unj_canteen/helper/indicator_status.dart';
-import 'package:unj_canteen/pages/canteen_list/lapangan.dart';
+import 'package:unj_canteen/pages/canteen_list/daksin_barat.dart';
 import 'package:unj_canteen/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,20 +7,20 @@ import 'package:provider/provider.dart';
 
 import '../../helper/custom_widget.dart';
 
-class DaksinBarat extends StatefulWidget {
-  const DaksinBarat({super.key});
+class Lapangan extends StatefulWidget {
+  const Lapangan({super.key});
 
   @override
-  State<DaksinBarat> createState() => _DaksinBaratState();
+  State<Lapangan> createState() => _LapanganState();
 }
 
-class _DaksinBaratState extends State<DaksinBarat> {
+class _LapanganState extends State<Lapangan> {
   final TextEditingController _searchController = TextEditingController();
   final List<List<String>> _dataList = [
+    ["Nasi Goreng", "Mie Goreng", "Nagomi"],
+    ["Katsu", "Dimsum", "Ayam"],
     ["Mie Ayam", "Bakso", "Mie Ayam Bakso"],
     ["Kebab", "Kebab Hitam", "Burger"],
-    ["Katsu", "Dimsum", "Ayam"],
-    ["Nasi Goreng", "Mie Goreng", "Nagomi"]
   ];
   final List<String> _filteredDataList = [];
   // instance of auth
@@ -161,7 +161,7 @@ class _DaksinBaratState extends State<DaksinBarat> {
             const SizedBox(
               height: 20,
             ),
-            buildTextTitle("Hello Kitty"),
+            buildTextTitle("Nasi Goreng Smeng"),
             const SizedBox(
               height: 20,
             ),
@@ -169,7 +169,7 @@ class _DaksinBaratState extends State<DaksinBarat> {
             const SizedBox(
               height: 10,
             ),
-            buildTextTitle("Kebab Daksin"),
+            buildTextTitle("Katsu Gacor"),
             const SizedBox(
               height: 20,
             ),
@@ -177,7 +177,7 @@ class _DaksinBaratState extends State<DaksinBarat> {
             const SizedBox(
               height: 10,
             ),
-            buildTextTitle("Katsu Gacor"),
+            buildTextTitle("Hello Kitty"),
             const SizedBox(
               height: 20,
             ),
@@ -185,7 +185,7 @@ class _DaksinBaratState extends State<DaksinBarat> {
             const SizedBox(
               height: 10,
             ),
-            buildTextTitle("Nasi Goreng Smeng"),
+            buildTextTitle("Kebab Daksin"),
             const SizedBox(
               height: 20,
             ),

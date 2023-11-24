@@ -1,6 +1,4 @@
 import 'package:unj_canteen/services/auth/auth_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // instance of auth
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // sign user out
   void signOut() {
@@ -26,15 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF5B5B5B),
-        actions: [
-          IconButton(onPressed: signOut, icon: Icon(Icons.logout))
-        ],
-      ),
-      body: ListView(
-        
-      ),
+      body: ListView(),
     );
   }
 

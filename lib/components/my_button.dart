@@ -17,7 +17,9 @@ class MyButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-                color: const Color.fromARGB(255, 239, 235, 235), fontWeight: FontWeight.bold, fontSize: 16),
+                color: const Color.fromARGB(255, 239, 235, 235),
+                fontWeight: FontWeight.bold,
+                fontSize: 16),
           ),
         ),
       ),

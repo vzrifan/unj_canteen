@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:unj_canteen/pages/canteen_list/blok_m_1.dart';
 import 'package:unj_canteen/pages/canteen_list/daksin_barat.dart';
 
-import 'home_page.dart';
+import 'settings_page.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -16,8 +17,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   // Create a list of pages or widgets to display for each tab
   final List<Widget> _pages = [
     const DaksinBarat(),
-    const HomePage(),
-    const ThirdPage(), // TODO third page
+    const BlokM1(),
+    const SettingsPage(), // TODO third page
   ];
 
   void _onTabTapped(int index) {
@@ -63,17 +64,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ThirdPage extends StatelessWidget {
-  const ThirdPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Third Page Content'),
     );
   }
 }

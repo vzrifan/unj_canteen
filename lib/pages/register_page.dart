@@ -34,9 +34,18 @@ class _RegisterPageState extends State<RegisterPage> {
       await authService.signUpWithEmailAndPassword(
           emailController.text, passwordController.text);
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
+      showSnackBar(e.toString());
     }
+  }
+
+  void showSnackBar(String message) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+        ),
+      );
+    });
   }
 
   @override
@@ -54,71 +63,71 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(
                     height: 20,
                   ),
-      
+
                   //logo
                   // Icon(
                   //   Icons.message,
                   //   size: 100,
                   //   color: Colors.grey[800],
                   // ),
-      
+
                   Image(
                     image: AssetImage('assets/images/logo_apk.png'),
                     height: MediaQuery.of(context).size.height / 3,
                     width: MediaQuery.of(context).size.width / 3,
                   ),
-      
+
                   const SizedBox(
                     height: 30,
                   ),
-      
+
                   //create account message
                   const Text(
                     "Let's create account for you!",
                     style: TextStyle(fontSize: 16, color: Color(0xCCCCCCCC)),
                   ),
-      
+
                   const SizedBox(
                     height: 25,
                   ),
-      
+
                   //email textfield
                   MyTextField(
                       controller: emailController,
                       hintText: "Email",
                       obsecureText: false),
-      
+
                   const SizedBox(
                     height: 10,
                   ),
-      
+
                   //password textfield
                   MyTextField(
                       controller: passwordController,
                       hintText: "Password",
                       obsecureText: true),
-      
+
                   const SizedBox(
                     height: 5,
                   ),
-      
+
                   //confirm password textfield
                   MyTextField(
                       controller: confirmPasswordController,
                       hintText: "Confirm password",
                       obsecureText: true),
-      
+
                   const SizedBox(
                     height: 25,
                   ),
-      
+
                   //sign in button
                   MyButton(onTap: signUp, text: "Sign Up"),
-      
+
                   const SizedBox(
                     height: 30,
                   ),
-      
+
                   //not a member? register now
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +144,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const Text(
                           "Login now",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Color(0xCCCCCCCC)),
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xCCCCCCCC)),
                         ),
                       ),
                     ],

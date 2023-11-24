@@ -46,61 +46,61 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 20,
                   ),
-      
+
                   //logo
                   // Icon(
                   //   Icons.message,
                   //   size: 100,
                   //   color: Colors.grey[800],
                   // ),
-      
+
                   Image(
                     image: AssetImage('assets/images/logo_apk.png'),
                     height: MediaQuery.of(context).size.height / 3,
                     width: MediaQuery.of(context).size.width / 3,
                   ),
-      
+
                   const SizedBox(
                     height: 30,
                   ),
-      
+
                   //welcome back message
                   const Text(
                     "Welcome back you've been missed!",
                     style: TextStyle(fontSize: 16, color: Color(0xCCCCCCCC)),
                   ),
-      
+
                   const SizedBox(
                     height: 25,
                   ),
-      
+
                   //email textfield
                   MyTextField(
                       controller: emailController,
                       hintText: "Email",
                       obsecureText: false),
-      
+
                   const SizedBox(
                     height: 10,
                   ),
-      
+
                   //password textfield
                   MyTextField(
                       controller: passwordController,
                       hintText: "Password",
                       obsecureText: true),
-      
+
                   const SizedBox(
                     height: 25,
                   ),
-      
+
                   //sign in button
                   MyButton(onTap: signIn, text: "Sign In"),
-      
+
                   const SizedBox(
                     height: 50,
                   ),
-      
+
                   //not a member? register now
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +117,8 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           "Register now",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Color(0xCCCCCCCC)),
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xCCCCCCCC)),
                         ),
                       ),
                     ],

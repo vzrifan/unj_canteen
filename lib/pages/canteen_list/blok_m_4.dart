@@ -1,20 +1,22 @@
 import 'package:unj_canteen/helper/indicator_status.dart';
-import 'package:unj_canteen/pages/canteen_list/lapangan.dart';
 import 'package:unj_canteen/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../helper/custom_widget.dart';
+import 'blok_m_1.dart';
+import 'blok_m_2.dart';
+import 'blok_m_3.dart';
 
-class DaksinBarat extends StatefulWidget {
-  const DaksinBarat({super.key});
+class BlokM4 extends StatefulWidget {
+  const BlokM4({super.key});
 
   @override
-  State<DaksinBarat> createState() => _DaksinBaratState();
+  State<BlokM4> createState() => _BlokM4State();
 }
 
-class _DaksinBaratState extends State<DaksinBarat> {
+class _BlokM4State extends State<BlokM4> {
   final TextEditingController _searchController = TextEditingController();
   final List<List<String>> _dataList = [
     ["Mie Ayam", "Bakso", "Mie Ayam Bakso"],
@@ -152,10 +154,10 @@ class _DaksinBaratState extends State<DaksinBarat> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                buildElevatedButton(
-                    "Daksin Barat", getStatus(), context, DaksinBarat()),
-                buildElevatedButton(
-                    "Lapangan", getStatus(), context, Lapangan()),
+                buildElevatedButton("1", getStatus(), context, BlokM1()),
+                buildElevatedButton("2", getStatus(), context, BlokM2()),
+                buildElevatedButton("3", getStatus(), context, BlokM3()),
+                buildElevatedButton("4", getStatus(), context, BlokM4()),
               ],
             ),
             const SizedBox(
