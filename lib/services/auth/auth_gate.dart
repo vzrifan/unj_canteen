@@ -2,6 +2,7 @@ import 'package:unj_canteen/services/auth/login_or_register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../pages/bottom_navigation.dart';
 import '../../pages/home_page.dart';
 
 class AuthGate extends StatelessWidget {
@@ -13,7 +14,7 @@ class AuthGate extends StatelessWidget {
       body: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder:(context, snapshot) {
         // user is logged in
         if(snapshot.hasData){
-          return const HomePage();
+          return const BottomNavigation();
         }
 
         // user is NOT login
