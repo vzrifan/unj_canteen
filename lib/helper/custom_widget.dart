@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:unj_canteen/helper/indicator_status.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 import '../components/my_feedback_list.dart';
 import '../components/my_rating_input.dart';
 import '../components/my_rating_widget.dart';
+import 'utils.dart';
 
 Container contentAlert(
   String imagePath,
@@ -82,24 +83,24 @@ AlertDialog buildAlertDialog(String imagePath, String foodName) {
   );
 }
 
-ElevatedButton buildElevatedButton(String title,
-    IndicatorStatus indicatorStatus, BuildContext context, Widget nextPage) {
-  Color backgroundColor;
-  // Set background color based on indicator status
-  switch (indicatorStatus) {
-    case IndicatorStatus.normal:
-      backgroundColor = Colors.green; // or any other color for normal
-      break;
-    case IndicatorStatus.less:
-      backgroundColor = Colors.greenAccent; // Set your desired color for less
-      break;
-    case IndicatorStatus.crowded:
-      backgroundColor = Colors.red; // Set your desired color for crowded
-      break;
-    case IndicatorStatus.medium:
-      backgroundColor = Colors.yellow;
-      break;
-  }
+ElevatedButton buildElevatedButton(String title, Color backgroundColor,
+    BuildContext context, Widget nextPage) {
+  // Color backgroundColor;
+  // // Set background color based on indicator status
+  // switch (indicatorStatus) {
+  //   case IndicatorStatus.normal:
+  //     backgroundColor = Colors.green; // or any other color for normal
+  //     break;
+  //   case IndicatorStatus.less:
+  //     backgroundColor = Colors.greenAccent; // Set your desired color for less
+  //     break;
+  //   case IndicatorStatus.crowded:
+  //     backgroundColor = Colors.red; // Set your desired color for crowded
+  //     break;
+  //   case IndicatorStatus.medium:
+  //     backgroundColor = Colors.yellow;
+  //     break;
+  // }
 
   return ElevatedButton(
     onPressed: () {
@@ -206,5 +207,152 @@ Card buildCard(String imagePath, String foodName, BuildContext context) {
         )
       ],
     ),
+  );
+}
+
+Row buildBlokMIndicator(List<Progress> prog) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      CircularPercentIndicator(
+        radius: prog[0].radius,
+        lineWidth: prog[0].lineWidth,
+        percent: prog[0].percent,
+        animation: prog[0].animation,
+        animationDuration: prog[0].animationDuration,
+        progressColor: prog[0].progressColor,
+        backgroundColor: prog[0].backgroundColor,
+        circularStrokeCap: prog[0].circularStrokeCap,
+        center: Center(
+          child: Text(
+            "Lantai 1",
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: prog[0].progressColor,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 20),
+      CircularPercentIndicator(
+        radius: prog[1].radius,
+        lineWidth: prog[1].lineWidth,
+        percent: prog[1].percent,
+        animation: prog[1].animation,
+        animationDuration: prog[1].animationDuration,
+        progressColor: prog[1].progressColor,
+        backgroundColor: prog[1].backgroundColor,
+        circularStrokeCap: prog[1].circularStrokeCap,
+        center: Center(
+          child: Text(
+            "Lantai 2",
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: prog[1].progressColor,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 20),
+      CircularPercentIndicator(
+        radius: prog[2].radius,
+        lineWidth: prog[2].lineWidth,
+        percent: prog[2].percent,
+        animation: prog[2].animation,
+        animationDuration: prog[2].animationDuration,
+        progressColor: prog[2].progressColor,
+        backgroundColor: prog[2].backgroundColor,
+        circularStrokeCap: prog[2].circularStrokeCap,
+        center: Center(
+          child: Text(
+            "Lantai 3",
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: prog[2].progressColor,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 20),
+      CircularPercentIndicator(
+        radius: prog[3].radius,
+        lineWidth: prog[3].lineWidth,
+        percent: prog[3].percent,
+        animation: prog[3].animation,
+        animationDuration: prog[3].animationDuration,
+        progressColor: prog[3].progressColor,
+        backgroundColor: prog[3].backgroundColor,
+        circularStrokeCap: prog[3].circularStrokeCap,
+        center: Center(
+          child: Text(
+            "Lantai 4",
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: prog[3].progressColor,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 20),
+    ],
+  );
+}
+
+Row buildDaksinIndicator(List<Progress> prog) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      const SizedBox(
+        width: 80,
+      ),
+      CircularPercentIndicator(
+        radius: prog[0].radius,
+        lineWidth: prog[0].lineWidth,
+        percent: prog[0].percent,
+        animation: prog[0].animation,
+        animationDuration: prog[0].animationDuration,
+        progressColor: prog[0].progressColor,
+        backgroundColor: prog[0].backgroundColor,
+        circularStrokeCap: prog[0].circularStrokeCap,
+        center: Center(
+          child: Text(
+            "Daksin Barat",
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: prog[0].progressColor,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(
+        width: 68,
+      ),
+      CircularPercentIndicator(
+        radius: prog[1].radius,
+        lineWidth: prog[1].lineWidth,
+        percent: prog[1].percent,
+        animation: prog[1].animation,
+        animationDuration: prog[1].animationDuration,
+        progressColor: prog[1].progressColor,
+        backgroundColor: prog[1].backgroundColor,
+        circularStrokeCap: prog[1].circularStrokeCap,
+        center: Center(
+          child: Text(
+            "Lapangan",
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: prog[1].progressColor,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(height: 20),
+    ],
   );
 }

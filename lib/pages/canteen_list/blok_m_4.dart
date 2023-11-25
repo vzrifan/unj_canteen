@@ -1,10 +1,12 @@
-import 'package:unj_canteen/helper/indicator_status.dart';
+import 'dart:async';
+
 import 'package:unj_canteen/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../helper/custom_widget.dart';
+import '../../helper/utils.dart';
 import 'blok_m_1.dart';
 import 'blok_m_2.dart';
 import 'blok_m_3.dart';
@@ -25,6 +27,9 @@ class _BlokM4State extends State<BlokM4> {
     ["Nasi Goreng", "Mie Goreng", "Nagomi"]
   ];
   final List<String> _filteredDataList = [];
+  List<Progress> prog = Progress.getProg();
+  late Timer _timer;
+
   // instance of auth
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -33,6 +38,24 @@ class _BlokM4State extends State<BlokM4> {
     super.initState();
     // Initialize the filtered list with the full list of data.
     _filteredDataList.addAll(_dataList.expand((list) => list).toList());
+    _startTimer();
+  }
+
+  void _startTimer() {
+    // Update the percentages every 5 seconds
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      setState(() {
+        // Update your progress data here
+        prog = Progress.getProg();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the timer to prevent memory leaks
+    _timer.cancel();
+    super.dispose();
   }
 
   void _filterList(String searchQuery) {
@@ -131,7 +154,8 @@ class _BlokM4State extends State<BlokM4> {
                                   color: Color(0xFF15C8CF),
                                 ),
                                 hintText: "   Search",
-                                hintStyle: const TextStyle(color: Color(0xFF15C8CF)),
+                                hintStyle:
+                                    const TextStyle(color: Color(0xFF15C8CF)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20))),
                           ),
@@ -151,13 +175,27 @@ class _BlokM4State extends State<BlokM4> {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Column(
               children: [
-                buildElevatedButton("1", getStatus(), context, const BlokM1()),
-                buildElevatedButton("2", getStatus(), context, const BlokM2()),
-                buildElevatedButton("3", getStatus(), context, const BlokM3()),
-                buildElevatedButton("4", getStatus(), context, const BlokM4()),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildBlokMIndicator(prog),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildElevatedButton(
+                        "1", prog[0].progressColor, context, const BlokM1()),
+                    buildElevatedButton(
+                        "2", prog[1].progressColor, context, const BlokM2()),
+                    buildElevatedButton(
+                        "3", prog[2].progressColor, context, const BlokM3()),
+                    buildElevatedButton(
+                        "4", prog[3].progressColor, context, const BlokM4()),
+                  ],
+                ),
               ],
             ),
             const SizedBox(

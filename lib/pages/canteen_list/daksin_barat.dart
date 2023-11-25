@@ -1,4 +1,5 @@
-import 'package:unj_canteen/helper/indicator_status.dart';
+import 'dart:async';
+
 import 'package:unj_canteen/pages/canteen_list/lapangan.dart';
 import 'package:unj_canteen/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../helper/custom_widget.dart';
+import '../../helper/utils.dart';
 
 class DaksinBarat extends StatefulWidget {
   const DaksinBarat({super.key});
@@ -23,6 +25,9 @@ class _DaksinBaratState extends State<DaksinBarat> {
     ["Nasi Goreng", "Mie Goreng", "Nagomi"]
   ];
   final List<String> _filteredDataList = [];
+  List<Progress> prog = Progress.getProg();
+  late Timer _timer;
+
   // instance of auth
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -31,6 +36,24 @@ class _DaksinBaratState extends State<DaksinBarat> {
     super.initState();
     // Initialize the filtered list with the full list of data.
     _filteredDataList.addAll(_dataList.expand((list) => list).toList());
+    _startTimer();
+  }
+
+  void _startTimer() {
+    // Update the percentages every 5 seconds
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      setState(() {
+        // Update your progress data here
+        prog = Progress.getProg();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the timer to prevent memory leaks
+    _timer.cancel();
+    super.dispose();
   }
 
   void _filterList(String searchQuery) {
@@ -129,7 +152,8 @@ class _DaksinBaratState extends State<DaksinBarat> {
                                   color: Color(0xFF15C8CF),
                                 ),
                                 hintText: "   Search",
-                                hintStyle: const TextStyle(color: Color(0xFF15C8CF)),
+                                hintStyle:
+                                    const TextStyle(color: Color(0xFF15C8CF)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20))),
                           ),
@@ -149,13 +173,18 @@ class _DaksinBaratState extends State<DaksinBarat> {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Column(
               children: [
-                buildElevatedButton(
-                    "Daksin Barat", getStatus(), context, const DaksinBarat()),
-                buildElevatedButton(
-                    "Lapangan", getStatus(), context, const Lapangan()),
+                buildDaksinIndicator(prog),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildElevatedButton("Daksin Barat", prog[0].progressColor,
+                        context, const DaksinBarat()),
+                    buildElevatedButton("Lapangan", prog[1].progressColor,
+                        context, const Lapangan()),
+                  ],
+                ),
               ],
             ),
             const SizedBox(
